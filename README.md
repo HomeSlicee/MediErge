@@ -4,7 +4,7 @@ MediErge is the marketing site for a premium, direct-to-consumer telehealth conc
 
 The site states it operates in accordance with the MoHFW Telemedicine Practice Guidelines 2020, and highlights doctors registered with the Indian Medical Council (IMC).
 
-> **Status:** Front-end landing page only. There is no backend, database, authentication, or payment integration yet — see [Known Issues](#known-issues--todo) below.
+> **Status:** Front-end only. All core pages are live. There is no backend, database, authentication, or payment integration yet — see [Known Issues](#known-issues--todo) below.
 
 ## Use Cases
 
@@ -46,21 +46,33 @@ npm run lint    # run ESLint
 ```
 src/
 ├── app/
-│   ├── layout.tsx       # Root layout, global metadata
-│   ├── page.tsx         # Homepage — assembles the sections below
-│   ├── globals.css      # Tailwind + CSS custom properties (--navy, --gold, --teal, --cream)
-│   └── quiz/
-│       └── page.tsx     # /quiz — placeholder "coming soon" page
+│   ├── layout.tsx           # Root layout, global metadata
+│   ├── page.tsx             # Homepage — assembles the sections below
+│   ├── globals.css          # Tailwind + CSS custom properties (--navy, --gold, --teal, --cream)
+│   ├── quiz/
+│   │   └── page.tsx         # /quiz — placeholder "coming soon" page
+│   ├── mens-health/
+│   │   └── page.tsx         # /mens-health — conditions, treatment cards, how it works
+│   ├── womens-health/
+│   │   └── page.tsx         # /womens-health — PCOS, hormones, skin & hair, wellness
+│   ├── skincare/
+│   │   └── page.tsx         # /skincare — acne, pigmentation, anti-aging, routines
+│   ├── hair/
+│   │   └── page.tsx         # /hair — hair loss, regrowth, scalp health
+│   ├── how-it-works/
+│   │   └── page.tsx         # /how-it-works — 6-step process, FAQ
+│   └── about/
+│       └── page.tsx         # /about — mission, stats, values, doctor profiles
 └── components/
-    ├── Navbar.tsx        # Site nav + "Start Consultation" CTA
-    ├── HeroSection.tsx   # Landing hero + trust badges
-    ├── ServiceCards.tsx  # Men's Health / Women's Health / Skincare / Hair cards
-    ├── HowItWorks.tsx    # 3-step process explainer
-    ├── WhyMediErge.tsx   # Feature/trust grid
-    ├── DoctorPanel.tsx   # Doctor bios and credentials
-    ├── Testimonials.tsx  # Patient testimonials
-    ├── CTABanner.tsx     # Bottom-of-page conversion banner
-    └── Footer.tsx        # Site footer, sitemap links, medical disclaimer
+    ├── Navbar.tsx            # Site nav + "Start Consultation" CTA
+    ├── HeroSection.tsx       # Landing hero + trust badges
+    ├── ServiceCards.tsx      # Men's Health / Women's Health / Skincare / Hair cards
+    ├── HowItWorks.tsx        # 3-step process explainer
+    ├── WhyMediErge.tsx       # Feature/trust grid
+    ├── DoctorPanel.tsx       # Doctor bios and credentials
+    ├── Testimonials.tsx      # Patient testimonials
+    ├── CTABanner.tsx         # Bottom-of-page conversion banner
+    └── Footer.tsx            # Site footer, sitemap links, medical disclaimer
 ```
 
 ## Routes
@@ -68,18 +80,17 @@ src/
 | Route | Status |
 |---|---|
 | `/` | ✅ Live — homepage |
+| `/mens-health` | ✅ Live — conditions, treatment cards, how it works |
+| `/womens-health` | ✅ Live — PCOS, hormones, skin & hair, wellness |
+| `/skincare` | ✅ Live — acne, pigmentation, anti-aging, routines |
+| `/hair` | ✅ Live — hair loss, regrowth, scalp health |
+| `/how-it-works` | ✅ Live — 6-step process explainer, FAQ |
+| `/about` | ✅ Live — mission, stats, values, doctor profiles |
 | `/quiz` | ⚠️ Placeholder — "Your Assessment Awaits... coming soon," no functional form |
-| `/mens-health` | ❌ Not implemented (404) |
-| `/womens-health` | ❌ Not implemented (404) |
-| `/skincare` | ❌ Not implemented (404) |
-| `/hair` | ❌ Not implemented (404) |
-| `/how-it-works` | ❌ Not implemented (404) |
-| `/about` | ❌ Not implemented (404) |
 
 ## Known Issues / TODO
 
-- **Every primary CTA leads to an incomplete flow.** All "Start Consultation" / "Start Your Assessment" buttons point to `/quiz`, which is currently a static placeholder with no form logic.
-- **Six of eight linked routes 404.** The navbar, service cards, and footer all link to `/mens-health`, `/womens-health`, `/skincare`, `/hair`, `/how-it-works`, and `/about`, none of which have a corresponding page yet.
+- **Quiz is not yet functional.** All "Start Consultation" / "Start Your Assessment" buttons point to `/quiz`, which is currently a static placeholder with no form logic.
 - **No backend.** All content (services, doctors, testimonials) is hardcoded in component files; there's no API, database, or CMS integration.
 - **No auth, payments, or booking system**, despite the site describing a consultation → prescription → delivery flow.
 
